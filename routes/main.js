@@ -34,8 +34,9 @@ router.post('/api/login', async (req, res, next) => {
         });
     }
 
-
-    if (key == 't3du98t2') {
+    console.log(process.env.AUTH_KEY)
+    if (key == process.env.AUTH_KEY) {
+        console.log(process.env.AUTH_KEY)
 
         return req.session.regenerate((err) => {
 
