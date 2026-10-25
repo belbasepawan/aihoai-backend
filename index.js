@@ -1,13 +1,12 @@
 import 'dotenv/config';
 import express from 'express';
 import path from 'node:path';
+import session from 'express-session';
 
 import { __dirname } from './utils/pathutils.js';
 import { errorResponse } from './utils/helper.js';
 import mainRouter from './routes/main.js';
 
-
-console.log("__dirname: "+ path.join( __dirname, '../public/assets'))
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
@@ -15,9 +14,22 @@ const PORT = Number(process.env.PORT) || 3001;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '../views'));
 
-// Static assets
-app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
+app.use(session({
+    name: 'app_session',
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        maxAge: 60 * 60 * 1000
+    }
+}));
+
 
 // Website routes
 app.use('/', mainRouter);

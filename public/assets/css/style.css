@@ -2,7 +2,7 @@
    AIHOAI / PHANTOM PANEL STYLESHEET
    ========================================================================== */
 
-@import url("fonts.css");
+@import url("/fonts.css");
 
 @layer properties {
   @supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))) {
