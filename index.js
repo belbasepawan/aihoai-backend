@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Static assets
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/static', express.static(path.join(__dirname, 'static')));
 
 // Website routes
 app.use('/', mainRouter);
