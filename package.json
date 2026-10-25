@@ -1,0 +1,17 @@
+{
+  "name": "aihoai",
+  "version": "1.0.0",
+  "description": "aihoai thaha xaina ra?",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js"
+  },
+  "author": "Pawan Belbase",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  }
+}

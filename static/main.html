@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html
+    class="tektur_99013633-module__gvqtga__variable chakra_petch_f32c32e0-module__AyWNja__variable jetbrains_mono_b2ad358f-module__viWy3W__variable reem_kufi_26e7f1b5-module__9uYUbW__variable ibm_plex_sans_arabic_8e5722bd-module__qAuVsW__variable h-full antialiased"
+    data-brand="AIHOAI" dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+    <title>
+        AIHOAI — Dashboard
+    </title>
+    <!-- Separated Stylesheets -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/assets/images/ai_logo.jpg">
+</head>
+
+<body class="h-full">
+    <!-- KeyAuth SDK & Main Dashboard Controller -->
+    <script src="assets/js/keyauth.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Ambient Background Blur Effects -->
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-background">
+        <div
+            class="animate-drift-a absolute left-1/2 top-[-14%] h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-white/[0.05] blur-[110px]">
+        </div>
+        <div
+            class="animate-drift-b absolute bottom-[-18%] right-[-12%] h-[480px] w-[480px] rounded-full bg-white/[0.035] blur-[110px]">
+        </div>
+    </div>
+    <!-- Main Viewport -->
+    <div class="ph-viewport">
+        <div class="ph-app" style="height:100dvh;width:100%;display:flex;flex-direction:column;position:relative">
+            <header class="ph-header" style="z-index:21">
+                <h1 class="ph-header__title ph-title" style="margin:0px">
+                    home
+                </h1>
+                <button aria-label="updates" class="ph-iconbtn ph-cut-xs ph-bell">
+                    <svg aria-hidden="true" fill="none" height="19" stroke="currentColor" stroke-linecap="square"
+                        stroke-width="2.4" viewbox="0 0 24 24" width="19">
+                        <path d="M6 16V10a6 6 0 0 1 12 0v6l2 3H4zM9.5 19a2.5 2.5 0 0 0 5 0">
+                        </path>
+                    </svg>
+                </button>
+                <button aria-expanded="false" aria-haspopup="menu" class="ph-lang ph-cut-xs">
+                    <svg aria-hidden="true" fill="none" height="15" stroke="currentColor" stroke-linecap="square"
+                        stroke-width="2" viewbox="0 0 24 24" width="15">
+                        <circle cx="12" cy="12" r="9">
+                        </circle>
+                        <path
+                            d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9">
+                        </path>
+                    </svg>
+                    <span>
+                        EN
+                    </span>
+                </button>
+            </header>
+            <main class="ph-view" style="flex:1 1 0%;overflow-y:auto;padding:0px 16px 8px">
+                <div style="display:flex;flex-direction:column;gap:12px">
+                    <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0px 2px">
+                        <button type="button" class="ph-status ph-cut-xs is-offline" id="status-badge" role="status" title="Click to toggle connection state">
+                            offline
+                        </button>
+                        <span class="ph-label" id="last-refreshed-label" style="color:var(--ph-text-7); font-size: 11px;">
+                            last refreshed just now
+                        </span>
+                    </div>
+                    <div class="ph-hud"
+                        style="height:332px;background:radial-gradient(circle at 50% 50%,color-mix(in oklch,var(--ph-accent) 16%,transparent) 0%,transparent 64%)">
+                        <span class="ph-hud__corner">
+                        </span>
+                        <span class="ph-hud__corner">
+                        </span>
+                        <span class="ph-hud__corner">
+                        </span>
+                        <span class="ph-hud__corner">
+                        </span>
+                        <svg aria-hidden="true" height="300"
+                            style="position:absolute;left:50%;top:50%;margin:-150px 0px 0px -150px"
+                            viewbox="0 0 300 300" width="300">
+                            <path
+                                d="M264.1 232.9L254.4 225.8M254.8 244.3L245.9 236.3M244.3 254.8L236.3 245.9M232.9 264.1L225.8 254.4M220.5 272.1L209.5 253.1M207.3 278.8L202.5 267.8M193.6 284.1L189.9 272.7M179.3 287.9L176.8 276.2M164.7 290.2L163.5 278.3M150.0 291.0L150.0 269.0M135.3 290.2L136.5 278.3M120.7 287.9L123.2 276.2M106.4 284.1L110.1 272.7M92.7 278.8L97.5 267.8M79.5 272.1L90.5 253.1M67.1 264.1L74.2 254.4M55.7 254.8L63.7 245.9M45.2 244.3L54.1 236.3M35.9 232.9L45.6 225.8M27.9 220.5L46.9 209.5M21.2 207.3L32.2 202.5M15.9 193.6L27.3 189.9M12.1 179.3L23.8 176.8M9.8 164.7L21.7 163.5M9.0 150.0L31.0 150.0M9.8 135.3L21.7 136.5M12.1 120.7L23.8 123.2M15.9 106.4L27.3 110.1M21.2 92.7L32.2 97.5M27.9 79.5L46.9 90.5M35.9 67.1L45.6 74.2M45.2 55.7L54.1 63.7M55.7 45.2L63.7 54.1M67.1 35.9L74.2 45.6M79.5 27.9L90.5 46.9M92.7 21.2L97.5 32.2M106.4 15.9L110.1 27.3M120.7 12.1L123.2 23.8M135.3 9.8L136.5 21.7"
+                                fill="none" stroke="#1f1f24" stroke-width="3.2">
+                            </path>
+                            <path
+                                d="M150.0 9.0L150.0 31.0M164.7 9.8L163.5 21.7M179.3 12.1L176.8 23.8M193.6 15.9L189.9 27.3M207.3 21.2L202.5 32.2M220.5 27.9L209.5 46.9M232.9 35.9L225.8 45.6M244.3 45.2L236.3 54.1M254.8 55.7L245.9 63.7M264.1 67.1L254.4 74.2M272.1 79.5L253.1 90.5M278.8 92.7L267.8 97.5M284.1 106.4L272.7 110.1M287.9 120.7L276.2 123.2M290.2 135.3L278.3 136.5M291.0 150.0L269.0 150.0M290.2 164.7L278.3 163.5M287.9 179.3L276.2 176.8M284.1 193.6L272.7 189.9M278.8 207.3L267.8 202.5M272.1 220.5L253.1 209.5"
+                                fill="none" stroke="var(--ph-accent)" stroke-width="3.2">
+                            </path>
+                        </svg>
+                        <div
+                            style="position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;max-width:200px">
+                            <img alt="AIHOAI" height="104" src="assets/images/ai_logo.jpg" style="height:104px;width:auto" />
+                            <div class="ph-ring__time" id="ring-time-left" style="color:var(--ph-text-1)">
+                                calculating...
+                            </div>
+                            <div class="ph-label" style="font-size:10.5px;color:var(--ph-text-6)">
+                                time left
+                            </div>
+                        </div>
+                    </div>
+                    <button aria-label="copy" class="ph-keychip ph-cut-sm" id="key-chip">
+                        <span class="ph-label" style="font-size:10px;color:var(--ph-text-7)">
+                            key
+                        </span>
+                        <span class="ph-keychip__value" id="key-display">
+                            AIAI-XXXX-XXXX-XXXX
+                        </span>
+                        <span class="ph-keychip__action ph-cut-xs">
+                            <svg aria-hidden="true" fill="none" height="14" stroke="currentColor"
+                                stroke-linecap="square" stroke-width="2.4" viewbox="0 0 24 24" width="14">
+                                <rect height="12" width="12" x="8" y="8">
+                                </rect>
+                                <path d="M16 8V4H4v12h4">
+                                </path>
+                            </svg>
+                            copy
+                        </span>
+                    </button>
+                    <div style="display:grid;grid-template-columns:repeat(3,minmax(0px,1fr));gap:8px">
+                        <div class="ph-fact ph-cut-sm">
+                            <span class="ph-label" style="font-size:9.5px;color:var(--ph-text-7)">
+                                activated
+                            </span>
+                            <span class="ph-fact__value" id="fact-activated">
+                                --
+                            </span>
+                        </div>
+                        <div class="ph-fact ph-cut-sm">
+                            <span class="ph-label" style="font-size:9.5px;color:var(--ph-text-7)">
+                                expires
+                            </span>
+                            <span class="ph-fact__value" id="fact-expires">
+                                --
+                            </span>
+                        </div>
+                        <div class="ph-fact ph-cut-sm">
+                            <span class="ph-label" style="font-size:9.5px;color:var(--ph-text-7)">
+                                device
+                            </span>
+                            <span class="ph-fact__value" id="fact-device">
+                                Web Client
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <div class="ph-connect-dock">
+                <a href="happ://crypt5/fzvdyx1jl6KdqhFQYZOufZWA88qNMEFp8DXMFowc/50cFFc2HAr/NmFQ6r1LLj+DOavUwgI1TpzOt5oyl67/ofo2vWZbeaBhQI2jIKP9PUODhFjcw=/h2T=EvYK39I2+WVRjIvRsNFBeSll3W5GHGY2KgVxPsI9t+Es4Q0X9/4MFhKZnajlaiiGi3uSiyOrLxqQa4RG4L48CnPItWhVqIBaV8dfm45tvBphYyQQwyJRhn05/ZDFQR1dvkjtxFjrS842dYkhBFfUs4JrTppcNpIjNAi4YEJ59RV9aCUG2d3fkvkK73HNv5seIWkg8NKLHhW7rSAVTB4yjou/jxxa/sXPqDEn6vKZaPoja26p9N6AiosKFwmMPcP+tnd3XleC2AYvs8c42dkN/Dk3esQx4YE6kC4+dqX9Tv0K6WA5NRHtg+lLJAQPEdAsNR8Vq2hJj8aGfrdAFlo7QNwxdA7UJTnoTgpgDt/2lQJuKA/hZ19AdxavNtdwlarzrdBDTm9s6Ho0EhXx5VM3S9ZNUE+j2BswITBeWnVSOXCzGKCvM2Lc3YMzA9TIBMv23ULkJdNVwIFyQApRbr/3YB0YGZN+uJdtP4foTrLlNJL88Xdl6SFCdX8OoCXu+gf0n9iqac+RVjjo7t52AIgGRUcXElMnOyW7d6bFreYS42/8DGaOa2WvSEHTifSvPqu6j5fdl0mbokUgxOxzhEevgWpFde8wgm5AJsirWmBw0p8RuLJdKpcbeCzQyqGQe7IUM2PzKJiCvdCRri5CE7/1o8X5DvMTXjTgtCHvOu0Onof=ff"
+                    class="ph-connect ph-cut-md">
+                    <div class="ph-connect__title-row">
+                        <span class="ph-connect__plus">
+                            <svg aria-hidden="true" fill="none" height="18" stroke="#000000" stroke-linecap="square"
+                                stroke-width="3" viewbox="0 0 24 24" width="18">
+                                <path d="M12 4v16M4 12h16"></path>
+                            </svg>
+                        </span>
+                        <span class="ph-connect__label">
+                            add subscription
+                        </span>
+                    </div>
+                    <span class="ph-connect__sub">
+                        opens your vpn app with your key ready
+                    </span>
+                </a>
+            </div>
+            <nav class="ph-tabbar" role="tablist" style="display: flex; justify-content: center; align-items: center; border-top: 1px solid var(--ph-line-3, #222227); background: var(--ph-bg); padding: 10px 10px 14px; width: 100%;">
+                <button aria-selected="true" class="ph-tab" role="tab" style="margin: 0 auto; width: 110px;">
+                    <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="square"
+                        stroke-width="2.2" viewbox="0 0 24 24" width="22">
+                        <path d="M4 10 12 3.5 20 10v10h-5.5v-5.5h-5V20H4z" stroke-linejoin="miter">
+                        </path>
+                    </svg>
+                    <span>
+                        home
+                    </span>
+                </button>
+            </nav>
+            <div class="ph-scanlines">
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
