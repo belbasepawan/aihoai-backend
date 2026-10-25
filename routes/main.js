@@ -37,14 +37,11 @@ router.post('/api/login', async (req, res, next) => {
 
     if (key == 'PAWAN') {
 
-        req.session.regenerate((err) => {
+        return req.session.regenerate((err) => {
 
             if (err) {
                 return next(err);
             }
-
-
-
 
             req.session.authenticated = true;
             req.session.key = key.trim();
