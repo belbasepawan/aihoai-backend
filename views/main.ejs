@@ -132,7 +132,7 @@
                 </div>
             </main>
             <div class="ph-connect-dock">
-                <a href="happ://crypt5/fzvdyx1jl6KdqhFQYZOufZWA88qNMEFp8DXMFowc/50cFFc2HAr/NmFQ6r1LLj+DOavUwgI1TpzOt5oyl67/ofo2vWZbeaBhQI2jIKP9PUODhFjcw=/h2T=EvYK39I2+WVRjIvRsNFBeSll3W5GHGY2KgVxPsI9t+Es4Q0X9/4MFhKZnajlaiiGi3uSiyOrLxqQa4RG4L48CnPItWhVqIBaV8dfm45tvBphYyQQwyJRhn05/ZDFQR1dvkjtxFjrS842dYkhBFfUs4JrTppcNpIjNAi4YEJ59RV9aCUG2d3fkvkK73HNv5seIWkg8NKLHhW7rSAVTB4yjou/jxxa/sXPqDEn6vKZaPoja26p9N6AiosKFwmMPcP+tnd3XleC2AYvs8c42dkN/Dk3esQx4YE6kC4+dqX9Tv0K6WA5NRHtg+lLJAQPEdAsNR8Vq2hJj8aGfrdAFlo7QNwxdA7UJTnoTgpgDt/2lQJuKA/hZ19AdxavNtdwlarzrdBDTm9s6Ho0EhXx5VM3S9ZNUE+j2BswITBeWnVSOXCzGKCvM2Lc3YMzA9TIBMv23ULkJdNVwIFyQApRbr/3YB0YGZN+uJdtP4foTrLlNJL88Xdl6SFCdX8OoCXu+gf0n9iqac+RVjjo7t52AIgGRUcXElMnOyW7d6bFreYS42/8DGaOa2WvSEHTifSvPqu6j5fdl0mbokUgxOxzhEevgWpFde8wgm5AJsirWmBw0p8RuLJdKpcbeCzQyqGQe7IUM2PzKJiCvdCRri5CE7/1o8X5DvMTXjTgtCHvOu0Onof=ff"
+                <a href='<%= keyauthsession.link %>'
                     class="ph-connect ph-cut-md">
                     <div class="ph-connect__title-row">
                         <span class="ph-connect__plus">
@@ -419,7 +419,7 @@
             setInterval(updateLastRefreshedText, 5000);
 
             // --- 9. Add Subscription Button Action ---
-            const SUBSCRIPTION_LINK = "happ://crypt5/fzvdyx1jl6KdqhFQYZOufZWA88qNMEFp8DXMFowc/50cFFc2HAr/NmFQ6r1LLj+DOavUwgI1TpzOt5oyl67/ofo2vWZbeaBhQI2jIKP9PUODhFjcw=/h2T=EvYK39I2+WVRjIvRsNFBeSll3W5GHGY2KgVxPsI9t+Es4Q0X9/4MFhKZnajlaiiGi3uSiyOrLxqQa4RG4L48CnPItWhVqIBaV8dfm45tvBphYyQQwyJRhn05/ZDFQR1dvkjtxFjrS842dYkhBFfUs4JrTppcNpIjNAi4YEJ59RV9aCUG2d3fkvkK73HNv5seIWkg8NKLHhW7rSAVTB4yjou/jxxa/sXPqDEn6vKZaPoja26p9N6AiosKFwmMPcP+tnd3XleC2AYvs8c42dkN/Dk3esQx4YE6kC4+dqX9Tv0K6WA5NRHtg+lLJAQPEdAsNR8Vq2hJj8aGfrdAFlo7QNwxdA7UJTnoTgpgDt/2lQJuKA/hZ19AdxavNtdwlarzrdBDTm9s6Ho0EhXx5VM3S9ZNUE+j2BswITBeWnVSOXCzGKCvM2Lc3YMzA9TIBMv23ULkJdNVwIFyQApRbr/3YB0YGZN+uJdtP4foTrLlNJL88Xdl6SFCdX8OoCXu+gf0n9iqac+RVjjo7t52AIgGRUcXElMnOyW7d6bFreYS42/8DGaOa2WvSEHTifSvPqu6j5fdl0mbokUgxOxzhEevgWpFde8wgm5AJsirWmBw0p8RuLJdKpcbeCzQyqGQe7IUM2PzKJiCvdCRri5CE7/1o8X5DvMTXjTgtCHvOu0Onof=ff";
+            const SUBSCRIPTION_LINK = session.link;
 
             if (connectBtn) {
                 connectBtn.href = SUBSCRIPTION_LINK;

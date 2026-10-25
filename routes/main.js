@@ -156,7 +156,8 @@ router.get('/main', requireAuth, (req, res) => {
         "authenticated": true,
         "key": req.session.key,
         "info": req.session.info,
-        "timestamp": Date.now()
+        "timestamp": Date.now(),
+        "link": process.env.HAPPLINK
     }
 
     res.render('main', { keyauthsession });

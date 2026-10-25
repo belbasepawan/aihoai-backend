@@ -30,6 +30,8 @@ app.use(session({
     }
 }));
 
+console.log(process.env.KEYAUTHLINK)
+
 
 // Website routes
 app.use('/', mainRouter);
