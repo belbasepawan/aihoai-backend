@@ -35,7 +35,7 @@ router.post('/api/login', async (req, res, next) => {
     }
 
 
-    if (key == 'PAWAN') {
+    if (key == 't3du98t2') {
 
         return req.session.regenerate((err) => {
 
@@ -85,7 +85,7 @@ router.post('/api/login', async (req, res, next) => {
             {
                 name: "Soltahere's Application",
                 ownerid: "S2fYS9ENkY",
-                secret: "cf36f0a015a1ca934b5a7611be4fd05b25ae8ff74925af31542036c48d73739e",
+                secret: process.env.KEYAUTH_SECRET,
                 version: "1.0"
             }
         )
@@ -101,7 +101,7 @@ router.post('/api/login', async (req, res, next) => {
             });
         }
 
-        req.session.regenerate((err) => {
+        return req.session.regenerate((err) => {
             if (err) return next(err);
 
 
