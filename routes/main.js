@@ -82,13 +82,15 @@ router.post('/api/login', async (req, res, next) => {
 
     try {
 
-        const KeyAuthApp = new KeyAuth(
-            {
-                name: "Soltahere's Application",
-                ownerid: "S2fYS9ENkY",
-                version: "1.0"
-            }
-        )
+        const KeyAuthApp = new KeyAuth({
+            name: 'Primary App',
+            ownerid: 'whitex',
+            secret: '494e69a466b10ec47aa68aadbd778a7b4cd372c40a8c1b47deb4de0c5deba0a7',
+            version: '1.0.0',
+            url: 'https://ai-auth-xff2.onrender.com/api/1.2/'
+        });
+
+
         const authResponse = await KeyAuthApp.license(
             key.trim(),
             hwid.trim()

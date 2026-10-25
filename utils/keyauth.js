@@ -2,27 +2,55 @@ class KeyAuth {
     constructor(config) {
         this.name = config.name;
         this.ownerid = config.ownerid;
-        this.version = config.version || "1.0";
-        this.url = config.url || "https://keyauth.win/api/1.2/";
+        this.version = config.version || "1.2";
+        this.secret = config.secret;
+        this.url = config.url || 'https://ai-auth-xff2.onrender.com/api/1.2/';
         this.sessionId = null;
         this.initialized = false;
     }
 
     async init() {
         try {
-            const initUrl = `${this.url}?type=init&name=${encodeURIComponent(this.name)}&ownerid=${encodeURIComponent(this.ownerid)}&ver=${encodeURIComponent(this.version)}`;
-            const response = await fetch(initUrl, {
-                method: "GET",
+            // const initUrl = `${this.url}?type=init&name=${encodeURIComponent(this.name)}&ownerid=${encodeURIComponent(this.ownerid)}&ver=${encodeURIComponent(this.version)}`;
+
+            // const response = await fetch(initUrl, {
+            //     method: "GET",
+            //     headers: {
+            //         "Accept": "application/json"
+            //     }
+            // });
+
+            const response = await fetch(this.url, {
+                method: 'POST',
                 headers: {
-                    "Accept": "application/json"
-                }
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    type: 'init',
+                    name: this.name,
+                    ownerid: this.ownerid,
+                    secret: this.secret,
+                    ver: this.version
+                })
             });
+
+
+            // debug
+            const data = await response.json();
+
+            console.log("Init request:", {
+                name: this.name,
+                ownerid: this.ownerid,
+                version: this.version,
+                url: this.url
+            });
+
+            console.log("Init response:", data);
+            //end debug
 
             if (!response.ok) {
                 throw new Error(`HTTP error ${response.status}`);
             }
-
-            const data = await response.json();
 
             if (!data.success) {
                 console.error("[KeyAuth] Init failed:", data.message);
@@ -54,13 +82,19 @@ class KeyAuth {
 
         try {
             const hwid = devicehwid;
-            const loginUrl = `${this.url}?type=license&key=${encodeURIComponent(licenseKey.trim())}&hwid=${encodeURIComponent(hwid)}&sessionid=${encodeURIComponent(this.sessionId)}&name=${encodeURIComponent(this.name)}&ownerid=${encodeURIComponent(this.ownerid)}`;
 
-            const response = await fetch(loginUrl, {
-                method: "GET",
+
+            const response = await fetch(this.url, {
+                method: 'POST',
                 headers: {
-                    "Accept": "application/json"
-                }
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    type: 'license',
+                    key: licenseKey,
+                    hwid: hwid,
+                    sessionid: this.sessionId
+                })
             });
 
             if (!response.ok) {
@@ -71,7 +105,7 @@ class KeyAuth {
 
             if (data.success) {
                 console.log("[KeyAuth] Authentication success:", data);
-                return { success: true, message: data.message || "Access Granted!", info: data};
+                return { success: true, message: data.message || "Access Granted!", info: data };
             } else {
                 console.warn("[KeyAuth] Authentication failed:", data.message);
                 return { success: false, message: data.message || "Invalid license key." };
@@ -81,6 +115,6 @@ class KeyAuth {
             return { success: false, message: "Authentication request failed. Check your internet connection." };
         }
     }
-}   
+}
 
 export default KeyAuth;
