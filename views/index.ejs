@@ -171,19 +171,6 @@
 
      
 
-      function getHWID() {
-        let hwid = localStorage.getItem("keyauth_hwid");
-
-        if (!hwid) {
-            hwid = "HWID-" + crypto.randomUUID()
-                .replace(/-/g, "")
-                .toUpperCase();
-
-            localStorage.setItem("keyauth_hwid", hwid);
-        }
-
-        return hwid;
-    }
 
        // --- UI Helper Functions ---
       function triggerError(message) {
