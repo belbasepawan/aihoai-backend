@@ -6,6 +6,9 @@ import { __dirname } from './utils/pathutils.js';
 import { errorResponse } from './utils/helper.js';
 import mainRouter from './routes/main.js';
 
+
+console.log("__dirname: "+ path.join( __dirname, '../public/assets'))
+
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
 
@@ -14,8 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Static assets
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use('/static', express.static(path.join(__dirname, 'static')));
+app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
 
 // Website routes
 app.use('/', mainRouter);
