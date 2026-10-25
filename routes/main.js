@@ -86,7 +86,6 @@ router.post('/api/login', async (req, res, next) => {
             {
                 name: "Soltahere's Application",
                 ownerid: "S2fYS9ENkY",
-                secret: process.env.KEYAUTH_SECRET,
                 version: "1.0"
             }
         )

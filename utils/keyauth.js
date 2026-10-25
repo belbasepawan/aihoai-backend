@@ -2,7 +2,6 @@ class KeyAuth {
     constructor(config) {
         this.name = config.name;
         this.ownerid = config.ownerid;
-        this.secret = config.secret; //not used
         this.version = config.version || "1.0";
         this.url = config.url || "https://keyauth.win/api/1.2/";
         this.sessionId = null;
