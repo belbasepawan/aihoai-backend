@@ -35,10 +35,52 @@
                     home
                 </h1>
 
-                <button id="logoutButton">Logout</button>
+                <button id="logoutButton" style="cursor: pointer;">Logout</button>
                 <p id="statusMessage" role="status" hidden></p>
 
-                
+                <style>
+                    #logoutButton {
+                        padding: 9px 17px;
+                        border: 1px solid #383838;
+                        border-radius: 7px;
+                        background: #1b1b1b;
+                        color: #d4d4d4;
+                        font-family: inherit;
+                        font-size: 12px;
+                        font-weight: 500;
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                        -webkit-tap-highlight-color: transparent;
+                    }
+
+                    #logoutButton:hover {
+                        background: #252525;
+                        border-color: #32dff5;
+                        color: #42e8ff;
+                        box-shadow: 0 0 12px rgba(50, 223, 245, 0.12);
+                    }
+
+                    #logoutButton:active {
+                        transform: scale(0.94);
+                        background: #103034;
+                        border-color: #42e8ff;
+                        box-shadow: 0 0 16px rgba(50, 223, 245, 0.2);
+                        transition-duration: 0.08s;
+                    }
+
+                    #logoutButton:focus-visible {
+                        outline: 1px solid #42e8ff;
+                        outline-offset: 3px;
+                    }
+
+                    @media (prefers-reduced-motion: reduce) {
+                        #logoutButton {
+                            transition: none;
+                        }
+                    }
+                </style>
+
+
             </header>
             <main class="ph-view" style="flex:1 1 0%;overflow-y:auto;padding:0px 16px 8px">
                 <div style="display:flex;flex-direction:column;gap:12px">
@@ -103,6 +145,70 @@
                             copy
                         </span>
                     </button>
+
+
+                    <style>
+                        .ph-keychip__action {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 6px;
+                            padding: 7px 10px;
+                            border: 1px solid transparent;
+                            border-radius: 6px;
+                            color: #b8b8b8;
+                            background: #1b1b1b;
+                            font-family: inherit;
+                            font-size: 10px;
+                            font-weight: 600;
+                            text-transform: uppercase;
+                            cursor: pointer;
+                            user-select: none;
+                            -webkit-tap-highlight-color: transparent;
+                            transition:
+                                color 0.2s ease,
+                                background-color 0.2s ease,
+                                border-color 0.2s ease,
+                                box-shadow 0.2s ease,
+                                transform 0.1s ease;
+                        }
+
+                        .ph-keychip__action svg {
+                            flex-shrink: 0;
+                            transition: transform 0.2s ease;
+                        }
+
+                        .ph-keychip__action:hover {
+                            color: #42e8ff;
+                            background: #10272a;
+                            border-color: rgba(66, 232, 255, 0.35);
+                            box-shadow: 0 0 12px rgba(66, 232, 255, 0.1);
+                        }
+
+                        .ph-keychip__action:hover svg {
+                            transform: scale(1.08);
+                        }
+
+                        .ph-keychip__action:active {
+                            transform: scale(0.94);
+                            background: #15383d;
+                            box-shadow: 0 0 14px rgba(66, 232, 255, 0.18);
+                            transition-duration: 0.08s;
+                        }
+
+                        .ph-keychip__action:focus-visible {
+                            outline: 1px solid #42e8ff;
+                            outline-offset: 3px;
+                        }
+
+                        @media (prefers-reduced-motion: reduce) {
+
+                            .ph-keychip__action,
+                            .ph-keychip__action svg {
+                                transition: none;
+                            }
+                        }
+                    </style>
                     <div style="display:grid;grid-template-columns:repeat(3,minmax(0px,1fr));gap:8px">
                         <div class="ph-fact ph-cut-sm">
                             <span class="ph-label" style="font-size:9.5px;color:var(--ph-text-7)">
@@ -132,8 +238,7 @@
                 </div>
             </main>
             <div class="ph-connect-dock">
-                <a href='<%= keyauthsession.link %>'
-                    class="ph-connect ph-cut-md">
+                <a href='<%= keyauthsession.link %>' class="ph-connect ph-cut-md">
                     <div class="ph-connect__title-row">
                         <span class="ph-connect__plus">
                             <svg aria-hidden="true" fill="none" height="18" stroke="#000000" stroke-linecap="square"
@@ -173,7 +278,7 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             const session = <%- JSON.stringify(keyauthsession).replace(/</g, '\\u003c') %>;
-            
+
 
             console.log('[AIHOAI] Session active. User authenticated with key:', session.key);
 
@@ -208,12 +313,13 @@
                     }
 
                     window.location.replace('/');
-                } catch {
-                    statusMessage.textContent =
-                        'Unable to log out. Please try again.';
+                }
+                catch (e) {
+                    statusMessage.textContent = 'Unable to log out. Please try again.';
                     statusMessage.hidden = false;
                     logoutButton.disabled = false;
                 }
+
             });
 
             // --- 3. Populate Authenticated Key ---
