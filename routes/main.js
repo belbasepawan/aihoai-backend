@@ -83,10 +83,10 @@ router.post('/api/login', async (req, res, next) => {
     try {
         
         const KeyAuthApp = new KeyAuth({
-            name: 'Primary App',
+            name: 'IOS/ANDRIOD',
             ownerid: 'AIHOAI',
-            secret: 'f02cba20b6e9b9041fa19a8a8134519594ff83a0e59f1a256fca809843eed8a6',
-            version: '1.0.0',
+            secret: '4b22396134ce97e79f37e9235f73e37636a3ef792ce3ea6f934f343dd0dd605f',
+            version: '1.0.1',
             url: 'https://ai-auth-xff2.onrender.com/api/1.2/'
         });
 
