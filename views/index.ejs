@@ -31,10 +31,10 @@
 
       return hwid;
     }
-    
+
 
     document.addEventListener('DOMContentLoaded', () => {
-    
+
       // form
       const accessForm = document.getElementById('access-form');
 
@@ -110,69 +110,69 @@
           }
           // Start Authentication state
           setAuthenticatingState(true);
-          showStatus('Connecting to KeyAuth servers...', 'info');        
-            // Authenticate license key against KeyAuth API
-            // const hwid = getHWID()
+          showStatus('Connecting to KeyAuth servers...', 'info');
+          // Authenticate license key against KeyAuth API
+          // const hwid = getHWID()
 
-            // const authResponse = await KeyAuthApp.license(rawKey, hwid);
+          // const authResponse = await KeyAuthApp.license(rawKey, hwid);
 
-            // LOGIN API
-            try {
-              const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  key: keyInput.value,
-                  hwid: getHWID()
-                })
-              });
+          // LOGIN API
+          try {
+            const response = await fetch('/api/login', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                key: keyInput.value,
+                hwid: getHWID()
+              })
+            });
 
-              setAuthenticatingState(true);
-              const data = await response.json();
-              
-              setAuthenticatingState(false);
-              // ORIGNAL STARTS 
-              if (!response.ok) {
-                // Invalid key or expired
-                triggerError(data.message || 'Invalid license key.');
-                return;
-              }
-              
-              // Valid key!
-              showStatus('Access Granted! Redirecting to panel...', 'success');
+            setAuthenticatingState(true);
+            const data = await response.json();
 
-              if (unlockBtnText) {
-                unlockBtnText.textContent = 'authorized';
-              }
+            setAuthenticatingState(false);
+            // ORIGNAL STARTS 
+            if (!response.ok) {
+              // Invalid key or expired
+              triggerError(data.message || 'Invalid license key.');
+              return;
+            }
 
-              // Redirect to the main dashboard page
-              setTimeout(() => {
-                console.log("redirecting to main page")
-                window.location.href = '/main';
-              }, 800);
+            // Valid key!
+            showStatus('Access Granted! Redirecting to panel...', 'success');
 
-            }          
-            catch (err) {
-              console.error('[AIHOAI] Auth exception:', err);
-              setAuthenticatingState(false);
-              triggerError('Connection error. Please try again.');
-            } 
-            
+            if (unlockBtnText) {
+              unlockBtnText.textContent = 'authorized';
+            }
 
-          });
+            // Redirect to the main dashboard page
+            setTimeout(() => {
+              console.log("redirecting to main page")
+              window.location.href = '/main';
+            }, 800);
 
-        }
+          }
+          catch (err) {
+            console.error('[AIHOAI] Auth exception:', err);
+            setAuthenticatingState(false);
+            triggerError('Connection error. Please try again.');
+          }
 
 
+        });
 
-      
-
-     
+      }
 
 
-       // --- UI Helper Functions ---
+
+
+
+
+
+
+      // --- UI Helper Functions ---
       function triggerError(message) {
         showStatus(message, 'error');
 
@@ -263,12 +263,13 @@
               </div>
 
               <span class="ph-label"
-                style="position: relative; z-index: 1; color: var(--ph-accent-text); letter-spacing: .16em;">Welcome to</span>
+                style="position: relative; z-index: 1; color: var(--ph-accent-text); letter-spacing: .16em;">Welcome
+                to</span>
 
               <div
                 style="position: relative; z-index: 1; display: flex; align-items: center; gap: 9px; font: 900 19px/1 var(--ph-font-display); letter-spacing: .035em; text-transform: uppercase;">
                 <span style="color: var(--ph-accent-text);">AIHOAI</span>
-                 </div>
+              </div>
 
               <p
                 style="position: relative; z-index: 1; font: var(--ph-type-body); color: #ffffff; line-height: 1.55; margin: 0;">
@@ -276,9 +277,8 @@
               </p>
 
               <div style="position: relative; z-index: 1; display: flex; gap: 9px; margin-top: 2px;">
-                <a class="ph-cut-sm" href="https://chat.whatsapp.com/LYiBZaxrdfTKcJRZFnKb2g" rel="noopener noreferrer"
-                  target="_blank"
-                  style="flex: 1; height: 46px; display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--ph-surface-4); color: var(--ph-text-2); font: 800 12.5px var(--ph-font-display); letter-spacing: .09em; text-transform: uppercase; text-decoration: none; border: 1px solid #222228;">
+                <a id="whatsapp-btn" class="ph-cut-sm" href="https://chat.whatsapp.com/LYiBZaxrdfTKcJRZFnKb2g"
+                  rel="noopener noreferrer" target="_blank">
                   <svg aria-hidden="true" fill="#4ad17a" height="17" style="flex: none;" viewBox="0 0 24 24" width="17">
                     <path
                       d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.9.9-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5.3-.4v-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 5.6 10c0 1.7 1.3 3.4 1.4 3.6s2.5 3.9 6.1 5.2c2.1.8 2.4.6 2.9.6s1.5-.6 1.7-1.2.2-1.2.2-1.3l-.4-.4Z">
@@ -287,6 +287,79 @@
                   WhatsApp
                 </a>
               </div>
+
+              <style>
+                #whatsapp-btn {
+                  position: relative;
+                  flex: 1;
+                  height: 46px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 8px;
+                  box-sizing: border-box;
+
+                  background: #171b19;
+                  color: #d4d4d4;
+                  border: 1px solid #303a33;
+                  border-radius: 7px;
+
+                  font: 800 12.5px var(--ph-font-display);
+                  letter-spacing: 0.09em;
+                  text-transform: uppercase;
+                  text-decoration: none;
+
+                  cursor: pointer;
+                  -webkit-tap-highlight-color: transparent;
+
+                  transition:
+                    color 0.2s ease,
+                    background-color 0.2s ease,
+                    border-color 0.2s ease,
+                    box-shadow 0.2s ease,
+                    transform 0.12s ease;
+                }
+
+                #whatsapp-btn svg {
+                  flex: none;
+                  color: #4ad17a;
+                  transition: transform 0.2s ease;
+                }
+
+                #whatsapp-btn:hover {
+                  color: #ffffff;
+                  background: #14231a;
+                  border-color: rgba(74, 209, 122, 0.55);
+                  box-shadow: 0 0 14px rgba(74, 209, 122, 0.1);
+                }
+
+                #whatsapp-btn:hover svg {
+                  transform: scale(1.1);
+                }
+
+                #whatsapp-btn:active {
+                  transform: scale(0.97);
+                  background: #102a1a;
+                  border-color: #4ad17a;
+                  box-shadow: 0 0 16px rgba(74, 209, 122, 0.18);
+                  transition-duration: 0.08s;
+                }
+
+                #whatsapp-btn:focus-visible {
+                  outline: 1px solid #4ad17a;
+                  outline-offset: 3px;
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+
+                  #whatsapp-btn,
+                  #whatsapp-btn svg {
+                    transition: none;
+                  }
+                }
+              </style>
+
+
             </div>
           </div>
         </div>
@@ -318,8 +391,57 @@
               <input id="key-input" name="key" aria-invalid="false" aria-label="access key" autocapitalize="characters"
                 autocomplete="off" autofocus placeholder="AIAI-XXXX-XXXX-XXXX" spellcheck="false" value="" />
               <button type="button" class="ph-keyinput__paste ph-cut-xs" id="paste-btn">
-                paste
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
+                  aria-hidden="true">
+                  <path
+                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                  <path
+                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                </svg>
               </button>
+
+              <style>
+                #paste-btn {
+                  cursor: pointer;
+                  color: #b8b8b8;
+                  background: #1b1b1b;
+                  border: 1px solid #383838;
+                  border-radius: 6px;
+                  transition:
+                    color 0.2s ease,
+                    background-color 0.2s ease,
+                    border-color 0.2s ease,
+                    box-shadow 0.2s ease,
+                    transform 0.1s ease;
+                  -webkit-tap-highlight-color: transparent;
+                }
+
+                #paste-btn:hover {
+                  color: #42e8ff;
+                  background: #10272a;
+                  border-color: rgba(66, 232, 255, 0.4);
+                  box-shadow: 0 0 12px rgba(66, 232, 255, 0.1);
+                }
+
+                #paste-btn:active {
+                  transform: scale(0.94);
+                  background: #15383d;
+                  border-color: #42e8ff;
+                  box-shadow: 0 0 14px rgba(66, 232, 255, 0.18);
+                  transition-duration: 0.08s;
+                }
+
+                #paste-btn:focus-visible {
+                  outline: 1px solid #42e8ff;
+                  outline-offset: 3px;
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                  #paste-btn {
+                    transition: none;
+                  }
+                }
+              </style>
             </div>
           </div>
 
@@ -332,10 +454,84 @@
           <span id="unlock-btn-text">unlock</span>
         </button>
 
+        <style>
+          #unlock-btn {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            transition:
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease,
+              transform 0.12s ease,
+              filter 0.2s ease;
+          }
+
+          #unlock-btn:hover {
+            filter: brightness(1.12);
+            border-color: #42e8ff;
+            box-shadow: 0 0 16px rgba(66, 232, 255, 0.16);
+          }
+
+          #unlock-btn:active {
+            transform: scale(0.98);
+            filter: brightness(0.92);
+            box-shadow: 0 0 8px rgba(66, 232, 255, 0.12);
+            transition-duration: 0.08s;
+          }
+
+          #unlock-btn:focus-visible {
+            outline: 1px solid #42e8ff;
+            outline-offset: 3px;
+          }
+
+          #unlock-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+            box-shadow: none;
+            transform: none;
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            #unlock-btn {
+              transition: none;
+            }
+          }
+        </style>
+
         <div style="display: flex; flex-direction: column; gap: 4px; text-align: center;">
+
           <span style="font: var(--ph-type-body); color: var(--ph-text-4);">
-            no key? contact your seller.
+            no key? <a class="ph-cut-sm" href="https://chat.whatsapp.com/LYiBZaxrdfTKcJRZFnKb2g"
+              rel="noopener noreferrer" target="_blank"> contact your seller. </a>
           </span>
+
+
+          <style>
+            a.ph-cut-sm[href*="chat.whatsapp.com"] {
+              color: #42e8ff;
+              text-decoration: none;
+              text-shadow: 0 0 6px rgba(66, 232, 255, 0.15);
+              transition: color 0.2s ease, text-shadow 0.2s ease;
+              -webkit-tap-highlight-color: transparent;
+            }
+
+            a.ph-cut-sm[href*="chat.whatsapp.com"]:hover {
+              color: #9af4ff;
+              text-shadow: 0 0 12px rgba(66, 232, 255, 0.4);
+            }
+
+            a.ph-cut-sm[href*="chat.whatsapp.com"]:active {
+              color: #ffffff;
+              text-shadow: 0 0 14px rgba(66, 232, 255, 0.5);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+              a.ph-cut-sm[href*="chat.whatsapp.com"] {
+                transition: none;
+              }
+            }
+          </style>
+
           <span style="font: var(--ph-type-body-sm); color: var(--ph-text-7);">
             your time starts when you connect.
           </span>

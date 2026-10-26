@@ -448,7 +448,7 @@
                         const actionText = keyChipBtn.querySelector('.ph-keychip__action');
                         if (actionText) {
                             const originalHTML = actionText.innerHTML;
-                            actionText.innerHTML = '<span>copied!</span>';
+                            actionText.innerHTML = '<span> ✓       copied!</span>';
                             setTimeout(() => {
                                 actionText.innerHTML = originalHTML;
                             }, 1500);
