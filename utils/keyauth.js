@@ -11,14 +11,6 @@ class KeyAuth {
 
     async init() {
         try {
-            // const initUrl = `${this.url}?type=init&name=${encodeURIComponent(this.name)}&ownerid=${encodeURIComponent(this.ownerid)}&ver=${encodeURIComponent(this.version)}`;
-
-            // const response = await fetch(initUrl, {
-            //     method: "GET",
-            //     headers: {
-            //         "Accept": "application/json"
-            //     }
-            // });
 
             const response = await fetch(this.url, {
                 method: 'POST',
